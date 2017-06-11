@@ -4,7 +4,8 @@ const Config = {
 
 		{
 			type: "ABOUT_US",
-			
+			title: "Contact us title",
+			content: "Test content"
 		}
 	]
 }
