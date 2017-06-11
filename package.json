@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/libressltd/libre-crm#readme",
   "dependencies": {
+    "native-base": "^2.1.5",
+    "react-html-parser": "^1.0.3",
     "react-native": "^0.45.1"
   }
 }
