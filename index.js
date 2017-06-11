@@ -1,3 +1,3 @@
-import { AboutUsScreen } from 'app/screens/AboutUsScreen';
+import { AboutUsScreen } from 'libre-crm/app/screens/AboutUsScreen';
 
-module.exports = { Config, AboutUsScreen }
+module.exports = { AboutUsScreen }
