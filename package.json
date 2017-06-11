@@ -1,0 +1,22 @@
+{
+  "name": "libre-crm",
+  "version": "1.0.0",
+  "description": "package for  crm system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/libressltd/libre-crm.git"
+  },
+  "author": "Eugene Nguyen Xuan Binh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/libressltd/libre-crm/issues"
+  },
+  "homepage": "https://github.com/libressltd/libre-crm#readme",
+  "dependencies": {
+    "react-native": "^0.45.1"
+  }
+}
