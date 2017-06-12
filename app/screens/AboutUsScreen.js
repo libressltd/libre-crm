@@ -5,9 +5,10 @@
  */
 
 import React, {Component} from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, Text, List, ListItem } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, List, ListItem } from 'native-base';
 import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
+import HTMLView from 'react-native-htmlview';
 
 class AboutUsScreen extends Component {
     render() {
@@ -19,14 +20,16 @@ class AboutUsScreen extends Component {
                         <Body>
                             <Title>Header</Title>
                         </Body>
-                        <Left>
+                        <Right>
                             <Button transparent>
                                 <Icon name='menu' />
                             </Button>
-                        </Left>
+                        </Right>
                     </Header>
                     <Content>
-
+                        <HTMLView
+                            value={ this.props.content }
+                        />
                     </Content>
                 </Container>
             </StyleProvider>

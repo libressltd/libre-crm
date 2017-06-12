@@ -5,7 +5,7 @@ const Config = {
 		{
 			type: "ABOUT_US",
 			title: "Contact us title",
-			content: "Test content"
+			content: "<p>Test content</p>"
 		}
 	]
 }

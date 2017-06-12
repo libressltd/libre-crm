@@ -23,7 +23,7 @@ class SideMenu extends Component {
                     <Content>
                         <List
                             dataArray={ this.state.items }
-                            renderRow={(item) => <SideMenuItem item={ item }/> }
+                            renderRow={ this.renderRow.bind(this) }
                         />
                     </Content>
                 </Container>
@@ -32,11 +32,7 @@ class SideMenu extends Component {
     }
 
     renderRow(item) {
-        return (
-            <Row styleName="small">
-                <Text>{ item.title }</Text>
-            </Row>
-        );
+        return <SideMenuItem item={ item }/>;
     }
 };
 
