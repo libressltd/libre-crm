@@ -13,7 +13,9 @@ import HTMLView from 'react-native-htmlview';
 class AboutUsScreen extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.navigation.state);
+        this.state = {
+            config: this.props.navigation.state.params ? this.props.navigation.state.params.config : false
+        }
     }
 
     render() {
@@ -33,7 +35,7 @@ class AboutUsScreen extends Component {
                     </Header>
                     <Content>
                         <HTMLView
-                            value={ this.props.content }
+                            value={ this.state.config ? this.state.config.content : "" }
                         />
                     </Content>
                 </Container>

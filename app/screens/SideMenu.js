@@ -37,7 +37,8 @@ class SideMenu extends Component {
 
     didPressRow(item)
     {
-        this.props.navigation.navigate("AboutUs1", { config: item });
+        console.log(item);
+        this.props.navigation.navigate(item.id, { config: item });
     }
 };
 

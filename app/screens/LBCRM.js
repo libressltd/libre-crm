@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 import { AboutUsScreen } from 'libre-crm/app/screens/AboutUsScreen';
 import { SideMenu } from 'libre-crm/app/screens/SideMenu';
+import { CategoryScreen } from 'libre-crm/app/screens/CategoryScreen';
 import OneSignal from 'react-native-onesignal';
 import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
+import { Config } from '../../../../Config';
 
 class LBCRM extends Component {
     render() {
@@ -64,10 +66,39 @@ class LBCRM extends Component {
     }
 }
 
-const ParentDrawerNavigator = DrawerNavigator({
-    AboutUs: {screen: AboutUsScreen},
-    AboutUs1: {screen: AboutUsScreen},
-}, {
+var parent_screens = {};
+for (var i = 0; i < Config.side_menu.length; i ++)
+{
+    var item = Config.side_menu[i];
+    switch (item.type)
+    {
+        case "ABOUT_US":
+        {
+            parent_screens[item.id] = {
+                screen: AboutUsScreen
+            };
+            break;
+        }
+        case "CATEGORY": 
+        {
+            const CategoryStack = StackNavigator({
+                Category: { screen: CategoryScreen },
+                // Post: {screen: PostScreen},
+                // PostDetail: {screen: PostDetailScreen},
+
+            }, {
+                headerMode: 'none',
+            });
+            parent_screens[item.id] = {
+                screen: CategoryStack
+            };
+            break;
+        }
+    }
+}
+console.log(parent_screens)
+
+const ParentDrawerNavigator = DrawerNavigator(parent_screens, {
     drawerPosition: 'right',
     contentComponent: props => renderContent(props)
 });

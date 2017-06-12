@@ -5,12 +5,12 @@
  */
 
 import React, {Component} from 'react';
-import {CategoryPostCell} from 'libre-crm/app/components/CategoryTabs';
+import { CategoryTabs } from 'libre-crm/app/components/CategoryTabs';
 
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, Text, List, ListItem } from 'native-base';
 import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
-
+import { Config } from '../../../../Config';
 
 class CategoryScreen extends Component {
 
@@ -20,77 +20,53 @@ class CategoryScreen extends Component {
             data: [],
             title: 'Testing',
             loading: true,
-            config: this.props.navigation.state.params.config
+            config: this.props.navigation.state.params ? this.props.navigation.state.params.config : Config.side_menu[0]
         };
         this.requestCategory();
     }
 
     render() {
-        const groupedData = GridRow.groupByRows(this.state.data, 2, () => {
-            return 1;
-        });
         return (
             <StyleProvider style={getTheme(material)}>
                 <Container>
-                    <Header hasTabs>
+                    <Header>
                         <Left>
-                            <Button transparent>
-                                <Icon name='menu' />
-                            </Button>
+                            
                         </Left>
                         <Body>
                             <Title>{ this.state.config.title }</Title>
                         </Body>
-                        <Right />
+                        <Right>
+                            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+                                <Icon name='menu' />
+                            </Button>
+                        </Right>
                     </Header>
+                    <CategoryTabs config={ this.state.config }/>
                 </Container>
             </StyleProvider>
         );
     }
 
-    // renderTab() {
-
-    // }
-
-    // renderRow(category) {
-    //     return (
-    //         <View style={{backgroundColor: '#fff200'}}>
-    //             <CategoryCell category={category} didPressCategory={this.didPressCategory.bind(this)}/>
-    //         </View>
-    //     );
-    // }
-
-    // renderRowCategory(category) {
-    //     return (
-    //         <View style={{backgroundColor: 'white'}}>
-    //             <CategoryPostCell category={category} didPressCategory={this.didPressCategory.bind(this)}/>
-    //         </View>
-    //     );
-    // }
-
-    // requestCategory() {
-    //     fetch(this.state.config.url, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         }
-    //     })
-    //         .then((response) => response.json())
-    //         .then((responseJson) => {
-    //             this.state.data = responseJson;
-    //             this.state.loading = false;
-    //             this.setState(this.state);
-    //             return responseJson;
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         }).done();
-    // }
-
-    // didPressCategory(category) {
-    //     this.props.navigation.navigate("Post", {category: category});
-    // }
+    requestCategory() {
+        fetch(this.state.config.url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.state.data = responseJson;
+                this.state.loading = false;
+                this.setState(this.state);
+                return responseJson;
+            })
+            .catch((error) => {
+                console.error(error);
+            }).done();
+    }
 
     // didPressRightBarButton() {
     //     this.props.navigation.navigate("DrawerOpen");
