@@ -1,6 +1,6 @@
 {
   "name": "libre-crm",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "package for  crm system",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,6 @@
     "react-native": "^0.45.1",
     "react-native-code-push": "^2.0.2-beta",
     "react-native-onesignal": "^3.0.3",
-    "react-navigation": "git+https://github.com/react-community/react-navigation.git#7edd9a7"
+    "react-navigation": "^1.0.0-beta.10"
   }
 }

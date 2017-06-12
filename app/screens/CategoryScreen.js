@@ -42,10 +42,16 @@ class CategoryScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <CategoryTabs config={ this.state.config }/>
+                    <CategoryTabs config={ this.state.config } didPressPost={ this.didPressPost.bind(this) }/>
                 </Container>
             </StyleProvider>
         );
+    }
+
+    didPressPost(post)
+    {
+        console.log("post", post);
+        this.props.navigation.navigate("PostDetail", { post: post });
     }
 
     requestCategory() {
@@ -56,16 +62,16 @@ class CategoryScreen extends Component {
                 'Content-Type': 'application/json',
             }
         })
-            .then((response) => response.json())
-            .then((responseJson) => {
-                this.state.data = responseJson;
-                this.state.loading = false;
-                this.setState(this.state);
-                return responseJson;
-            })
-            .catch((error) => {
-                console.error(error);
-            }).done();
+        .then((response) => response.json())
+        .then((responseJson) => {
+            this.state.data = responseJson;
+            this.state.loading = false;
+            this.setState(this.state);
+            return responseJson;
+        })
+        .catch((error) => {
+            console.error(error);
+        }).done();
     }
 
     // didPressRightBarButton() {

@@ -11,7 +11,7 @@ import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 import GridView from 'react-native-grid-view'
 import { CategoryCell } from '../../../../customize/CategoryCell';
-import { ProductList } from 'libre-crm/components/ProductList'
+import { ProductList } from 'libre-crm/app/components/ProductList'
 
 
 class CategoryTabs extends Component {
@@ -46,6 +46,7 @@ class CategoryTabs extends Component {
                     <ProductList
                         config={ this.state.config }
                         category_id={ category.id }
+                        didPressPost={ this.props.didPressPost }
                     />
                 </Tab>
             )
