@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import { AboutUsScreen } from 'libre-crm/app/screens/AboutUsScreen';
 import { SideMenu } from 'libre-crm/app/screens/SideMenu';
 import OneSignal from 'react-native-onesignal';
+import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
 
 class LBCRM extends Component {
-	render() {
-		return (
-			<ParentDrawerNavigator />
-		);
-	}
+    render() {
+        return (
+            <ParentDrawerNavigator />
+        );
+    }
 
-	componentWillMount() {
-		AsyncStorage.getItem("statusNoti").then(value => {
-			if (value == null)
-			{
-				OneSignal.setSubscription(true);
-			}
-			else
-			{
-				if (value == 1)
-				{
-					OneSignal.setSubscription(true);
-				}
-				else
-				{
-					OneSignal.setSubscription(false);
-				}
-			}
-		});
+    componentWillMount() {
+        AsyncStorage.getItem("statusNoti").then(value => {
+            if (value == null)
+            {
+                OneSignal.setSubscription(true);
+            }
+            else
+            {
+                if (value == 1)
+                {
+                    OneSignal.setSubscription(true);
+                }
+                else
+                {
+                    OneSignal.setSubscription(false);
+                }
+            }
+        });
         OneSignal.addEventListener('received', this.onReceived);
         OneSignal.addEventListener('opened', this.onOpened);
         OneSignal.addEventListener('registered', this.onRegistered);
@@ -58,21 +60,21 @@ class LBCRM extends Component {
 
     onIds(device) {
         AsyncStorage.setItem('device_info', device.userId);
-		console.log('Device info: ', device);
+        console.log('Device info: ', device);
     }
 }
 
 const ParentDrawerNavigator = DrawerNavigator({
     AboutUs: {screen: AboutUsScreen},
+    AboutUs1: {screen: AboutUsScreen},
 }, {
     drawerPosition: 'right',
     contentComponent: props => renderContent(props)
 });
 
 function renderContent(props) {
-
     return (
-        <SideMenu />
+        <SideMenu { ...props }/>
     );
 }
 

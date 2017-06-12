@@ -32,7 +32,12 @@ class SideMenu extends Component {
     }
 
     renderRow(item) {
-        return <SideMenuItem item={ item }/>;
+        return <SideMenuItem item={ item } didPressRow={ this.didPressRow.bind(this) }/>;
+    }
+
+    didPressRow(item)
+    {
+        this.props.navigation.navigate("AboutUs1", { config: item });
     }
 };
 

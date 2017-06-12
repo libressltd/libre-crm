@@ -11,6 +11,11 @@ import material from '../../../../native-base-theme/variables/platform';
 import HTMLView from 'react-native-htmlview';
 
 class AboutUsScreen extends Component {
+    constructor(props) {
+        super(props);
+        console.log(this.props.navigation.state);
+    }
+
     render() {
         return (
             <StyleProvider style={getTheme(material)}>
@@ -21,7 +26,7 @@ class AboutUsScreen extends Component {
                             <Title>Header</Title>
                         </Body>
                         <Right>
-                            <Button transparent>
+                            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
                                 <Icon name='menu' />
                             </Button>
                         </Right>
