@@ -29,5 +29,5 @@
   },
   "scripts": {
     "postinstall": "node addEjectScript.js"
-  },
+  }
 }
