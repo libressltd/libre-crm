@@ -37,8 +37,30 @@ class SideMenu extends Component {
 
     didPressRow(item)
     {
-        console.log(item);
-        this.props.navigation.navigate(item.id, { config: item });
+        if (item.type == 'SHARE')
+        {
+            var url;
+            if (Platform.OS === 'ios')
+            {
+                url = item.ios_link;
+            }
+            else
+            {
+                url = item.android_link;
+            }
+            Share.open({
+                share_text: item.share_text,
+                share_URL: url,
+                title: item.share_title,
+                url: url
+            }, function (e) {
+                console.log(e);
+            });
+        }
+        else
+        {
+            this.props.navigation.navigate(item.id, { config: item });
+        }
     }
 };
 

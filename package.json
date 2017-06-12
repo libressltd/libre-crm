@@ -1,6 +1,6 @@
 {
   "name": "libre-crm",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "package for  crm system",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,13 @@
     "react-html-parser": "^1.0.3",
     "react-native": "^0.45.1",
     "react-native-code-push": "^2.0.2-beta",
-    "react-native-onesignal": "^3.0.3",
-    "react-navigation": "^1.0.0-beta.10"
-  }
+    "react-native-onesignal": "^3.0.4",
+    "react-navigation": "^1.0.0-beta.11",
+    "react-native-share": "^1.0.20",
+    "react-native-swiper": "^1.5.4",
+    "moment": "^2.18.1"
+  },
+  "scripts": {
+    "postinstall": "node addEjectScript.js"
+  },
 }
