@@ -35,6 +35,12 @@ const Config = {
 			type: "SETTING",
 			title: "Setting",
 			url: "http://jobs.mustachee.com/api/contact_us"
+		},
+		{
+			id: "notification",
+			type: "NOTIFICATION",
+			title: "Notification",
+			url: "http://jobs.mustachee.com/api/contact_us"
 		}
 	]
 }

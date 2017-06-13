@@ -31,7 +31,7 @@ class CategoryScreen extends Component {
                 <Container>
                     <Header>
                         <Left>
-                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                            <Button transparent onPress={() => this.props.navigation.navigate("Notification")}>
                                 <Icon name='ios-notifications-outline' />
                             </Button>
                         </Left>

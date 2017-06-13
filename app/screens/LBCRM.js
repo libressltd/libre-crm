@@ -7,6 +7,7 @@ import { PostDetailScreen } from 'libre-crm/app/screens/PostDetailScreen';
 import { PostScreen } from 'libre-crm/app/screens/PostScreen';
 import { ContactUsScreen } from 'libre-crm/app/screens/ContactUsScreen';
 import { SettingScreen } from 'libre-crm/app/screens/SettingScreen';
+import { NotificationScreen } from 'libre-crm/app/screens/NotificationScreen';
 import OneSignal from 'react-native-onesignal';
 import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { Config } from '../../../../Config';
@@ -78,8 +79,15 @@ for (var i = 0; i < Config.side_menu.length; i ++)
     {
         case "ABOUT_US":
         {
+            const AboutUsStack = StackNavigator({
+                AboutUs: { screen: AboutUsScreen },
+                Notification: {screen: NotificationScreen},
+                PostDetail: {screen: PostDetailScreen},
+            }, {
+                headerMode: 'none',
+            });
             parent_screens[item.id] = {
-                screen: AboutUsScreen
+                screen: AboutUsStack
             };
             break;
         }
@@ -87,6 +95,7 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         {
             const CategoryStack = StackNavigator({
                 Category: { screen: CategoryScreen },
+                Notification: {screen: NotificationScreen},
                 Post: {screen: PostScreen},
                 PostDetail: {screen: PostDetailScreen},
 
@@ -100,21 +109,47 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         }
         case "CONTACT_US":
         {
+            const ContactUsStack = StackNavigator({
+                ContactUs: { screen: ContactUsScreen },
+                Notification: {screen: NotificationScreen},
+                PostDetail: {screen: PostDetailScreen},
+            }, {
+                headerMode: 'none',
+            });
             parent_screens[item.id] = {
-                screen: ContactUsScreen
+                screen: ContactUsStack
             }
             break;
         }
         case "SETTING": 
         {
+            const SettingStack = StackNavigator({
+                Setting: { screen: SettingScreen },
+                Notification: {screen: NotificationScreen},
+                PostDetail: {screen: PostDetailScreen},
+            }, {
+                headerMode: 'none',
+            });
             parent_screens[item.id] = {
-                screen: SettingScreen
+                screen: SettingStack
+            }
+            break;
+        }
+        case "NOTIFICATION": 
+        {
+            const NotificationStack = StackNavigator({
+                Notification: { screen: NotificationScreen },
+                PostDetail: {screen: PostDetailScreen},
+            }, {
+                headerMode: 'none',
+            });
+            parent_screens[item.id] = {
+                screen: NotificationScreen
             }
             break;
         }
     }
 }
-console.log(parent_screens)
 
 const ParentDrawerNavigator = DrawerNavigator(parent_screens, {
     drawerPosition: 'right',
