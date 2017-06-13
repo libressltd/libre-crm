@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Platform } from 'react-native';
+import Share from "react-native-share";
 import { Config } from '../../../../Config';
 
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, Text, List, ListItem } from 'native-base';

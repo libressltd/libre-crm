@@ -1,19 +1,25 @@
 const Config = {
-	base_url: "http://iraqeconomy.mustachee.com/",
+	base_url: "http://jobs.mustachee.com/",
 	side_menu: [
 		{
 			id: "category",
 			type: "CATEGORY",
 			title: "Category",
-			url: Config.base_url + "api/category",
-			post_url: Config.base_url + "api/offer?category_id={category_id}",
-			post_detail_url: Config.base_url + "api/offer?category_id={category_id}",
+			url: "http://jobs.mustachee.com/api/category",
+			post_url: "http://jobs.mustachee.com/api/offer?category_id={category_id}",
+			post_detail_url: "http://jobs.mustachee.com/api/offer?category_id={category_id}",
 		},
 		{
 			id: "about_us",
 			type: "ABOUT_US",
-			title: "Contact us title",
+			title: "About us",
 			content: "<p>Test contentlakjsdlfkja sopidj aposijdf poaisjdf poi</p>"
+		},
+		{
+			id: "contact_us",
+			type: "CONTACT_US",
+			title: "Contact us",
+			url: "http://jobs.mustachee.com/api/contact_us"
 		},
 		{
 			id: "about_us",

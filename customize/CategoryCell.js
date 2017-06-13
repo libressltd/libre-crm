@@ -23,7 +23,7 @@ class CategoryCell extends Component {
     render() {
         const window = Dimensions.get('window');
         return (
-            <TouchableOpacity key={ this.props.item.id } onPress={this.didPressCell.bind(this)}>
+            <TouchableOpacity key={ this.props.item.id } onPress={() => this.props.didPressCategory(this.props.item)}>
                 <Image
                     style={{ marginLeft: 7, marginRight: 7, height: window.width * 180 / 375 - 7,
                     width: window.width * 180 / 375 - 7}}

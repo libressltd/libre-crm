@@ -31,7 +31,9 @@ class CategoryScreen extends Component {
                 <Container>
                     <Header>
                         <Left>
-                            
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon name='ios-notifications-outline' />
+                            </Button>
                         </Left>
                         <Body>
                             <Title>{ this.state.config.title }</Title>
@@ -42,7 +44,7 @@ class CategoryScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <CategoryTabs config={ this.state.config } didPressPost={ this.didPressPost.bind(this) }/>
+                    <CategoryTabs config={ this.state.config } didPressPost={ this.didPressPost.bind(this) } didPressCategory={ this.didPressCategory.bind(this) }/>
                 </Container>
             </StyleProvider>
         );
@@ -50,8 +52,12 @@ class CategoryScreen extends Component {
 
     didPressPost(post)
     {
-        console.log("post", post);
         this.props.navigation.navigate("PostDetail", { post: post });
+    }
+
+    didPressCategory(category)
+    {
+        this.props.navigation.navigate("Post", { category: category, config: this.state.config });
     }
 
     requestCategory() {

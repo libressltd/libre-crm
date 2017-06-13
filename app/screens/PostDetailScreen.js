@@ -43,7 +43,9 @@ class PostDetailScreen extends Component {
                 <Container>
                     <Header>
                         <Left>
-                            
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon name='md-arrow-back' />
+                            </Button>
                         </Left>
                         <Body>
                             <Title>{ this.state.post.title }</Title>

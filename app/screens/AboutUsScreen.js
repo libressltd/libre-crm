@@ -23,9 +23,13 @@ class AboutUsScreen extends Component {
             <StyleProvider style={getTheme(material)}>
                 <Container>
                     <Header>
-                        <Left />
+                        <Left>
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon name='ios-notifications-outline' />
+                            </Button>
+                        </Left>
                         <Body>
-                            <Title>Header</Title>
+                            <Title>{ this.state.config.title }</Title>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>

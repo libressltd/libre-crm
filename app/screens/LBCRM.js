@@ -4,6 +4,8 @@ import { AboutUsScreen } from 'libre-crm/app/screens/AboutUsScreen';
 import { SideMenu } from 'libre-crm/app/screens/SideMenu';
 import { CategoryScreen } from 'libre-crm/app/screens/CategoryScreen';
 import { PostDetailScreen } from 'libre-crm/app/screens/PostDetailScreen';
+import { PostScreen } from 'libre-crm/app/screens/PostScreen';
+import { ContactUsScreen } from 'libre-crm/app/screens/ContactUsScreen';
 import OneSignal from 'react-native-onesignal';
 import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { Config } from '../../../../Config';
@@ -84,7 +86,7 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         {
             const CategoryStack = StackNavigator({
                 Category: { screen: CategoryScreen },
-                // Post: {screen: PostScreen},
+                Post: {screen: PostScreen},
                 PostDetail: {screen: PostDetailScreen},
 
             }, {
@@ -94,6 +96,12 @@ for (var i = 0; i < Config.side_menu.length; i ++)
                 screen: CategoryStack
             };
             break;
+        }
+        case "CONTACT_US":
+        {
+            parent_screens[item.id] = {
+                screen: ContactUsScreen
+            }
         }
     }
 }
