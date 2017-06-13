@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 
-
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, Text, List, ListItem } from 'native-base';
 import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
-
+import { Config } from '../../../../Config';
+import { NotificationCell } from '../../../../customize/NotificationCell';
 
 class NotificationScreen extends Component {
-	render() {
-		return (
-			<StyleProvider style={getTheme(material)}>
-			    <Container>
+    constructor(props) {
+        super(props);
+        this.state = { 
+            config: Config.notification_screen,
+            data: []
+        }
+    }
+
+    render() {
+        return (
+            <StyleProvider style={getTheme(material)}>
+                <Container>
                     <Header>
-                        <Left>
-                            <Button transparent onPress={() => this.props.navigation.goBack()}>
-                                <Icon name='ios-notifications-outline' />
-                            </Button>
-                        </Left>
+                        <Left />
                         <Body>
                             <Title>{ this.state.config.title }</Title>
                         </Body>
@@ -26,13 +30,40 @@ class NotificationScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-			        <Content>
-			        	
-			        </Content>
-			    </Container>
-			</StyleProvider>
-		);
-	}
+                    <Content>
+                        <List
+                            dataArray={ this.state.data }
+                            renderRow={(item) => <NotificationCell item={ item } didPressNotification={ this.didPressNotification.bind(this) }/>}
+                        />
+                    </Content>
+                </Container>
+            </StyleProvider>
+        );
+    }
+
+    requestNotification()
+    {
+        fetch(this.state.config.url , {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+            this.setState({ ...this.state, data: responseJson });
+            return responseJson;
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+    }
+
+    didPressNotification(notification)
+    {
+
+    }
 }
 
 module.exports = { NotificationScreen }

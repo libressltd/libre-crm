@@ -79,15 +79,8 @@ for (var i = 0; i < Config.side_menu.length; i ++)
     {
         case "ABOUT_US":
         {
-            const AboutUsStack = StackNavigator({
-                AboutUs: { screen: AboutUsScreen },
-                Notification: {screen: NotificationScreen},
-                PostDetail: {screen: PostDetailScreen},
-            }, {
-                headerMode: 'none',
-            });
             parent_screens[item.id] = {
-                screen: AboutUsStack
+                screen: AboutUsScreen
             };
             break;
         }
@@ -95,7 +88,6 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         {
             const CategoryStack = StackNavigator({
                 Category: { screen: CategoryScreen },
-                Notification: {screen: NotificationScreen},
                 Post: {screen: PostScreen},
                 PostDetail: {screen: PostDetailScreen},
 
@@ -109,29 +101,15 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         }
         case "CONTACT_US":
         {
-            const ContactUsStack = StackNavigator({
-                ContactUs: { screen: ContactUsScreen },
-                Notification: {screen: NotificationScreen},
-                PostDetail: {screen: PostDetailScreen},
-            }, {
-                headerMode: 'none',
-            });
             parent_screens[item.id] = {
-                screen: ContactUsStack
+                screen: ContactUsScreen
             }
             break;
         }
         case "SETTING": 
         {
-            const SettingStack = StackNavigator({
-                Setting: { screen: SettingScreen },
-                Notification: {screen: NotificationScreen},
-                PostDetail: {screen: PostDetailScreen},
-            }, {
-                headerMode: 'none',
-            });
             parent_screens[item.id] = {
-                screen: SettingStack
+                screen: SettingScreen
             }
             break;
         }
@@ -150,6 +128,14 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         }
     }
 }
+
+const NotificationStack = StackNavigator({
+    Notification: { screen: NotificationScreen },
+    PostDetail: {screen: PostDetailScreen},
+}, {
+    headerMode: 'none',
+});
+parent_screens['Notification'] = { screen: NotificationStack };
 
 const ParentDrawerNavigator = DrawerNavigator(parent_screens, {
     drawerPosition: 'right',

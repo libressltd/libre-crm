@@ -40,8 +40,13 @@ const Config = {
 			id: "notification",
 			type: "NOTIFICATION",
 			title: "Notification",
-			url: "http://jobs.mustachee.com/api/contact_us"
+			url: "http://jobs.mustachee.com/api/notification"
 		}
-	]
+	],
+	notification_screen: {
+		type: "NOTIFICATION",
+		title: "Notification",
+		url: "http://jobs.mustachee.com/api/notification"
+	}
 }
 module.exports = { Config }
