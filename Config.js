@@ -29,6 +29,12 @@ const Config = {
 			share_title: "Share our app",
 			ios_link: "http://ioslink.com",
 			android_link: "http://androidlink.com",
+		},
+		{
+			id: "setting",
+			type: "SETTING",
+			title: "Setting",
+			url: "http://jobs.mustachee.com/api/contact_us"
 		}
 	]
 }

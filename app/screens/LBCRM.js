@@ -6,6 +6,7 @@ import { CategoryScreen } from 'libre-crm/app/screens/CategoryScreen';
 import { PostDetailScreen } from 'libre-crm/app/screens/PostDetailScreen';
 import { PostScreen } from 'libre-crm/app/screens/PostScreen';
 import { ContactUsScreen } from 'libre-crm/app/screens/ContactUsScreen';
+import { SettingScreen } from 'libre-crm/app/screens/SettingScreen';
 import OneSignal from 'react-native-onesignal';
 import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { Config } from '../../../../Config';
@@ -102,6 +103,14 @@ for (var i = 0; i < Config.side_menu.length; i ++)
             parent_screens[item.id] = {
                 screen: ContactUsScreen
             }
+            break;
+        }
+        case "SETTING": 
+        {
+            parent_screens[item.id] = {
+                screen: SettingScreen
+            }
+            break;
         }
     }
 }
