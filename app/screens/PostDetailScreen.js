@@ -31,6 +31,7 @@ class PostDetailScreen extends Component {
         super(props);
         const {params} = this.props.navigation.state;
         this.state = {
+            post_id: params.post_id,
             post: params.post,
             loading: false
         };
@@ -38,52 +39,82 @@ class PostDetailScreen extends Component {
     }
 
     render() {
-        return (
-            <StyleProvider style={getTheme(material)}>
-                <Container>
-                    <Header>
-                        <Left>
-                            <Button transparent onPress={() => this.props.navigation.goBack()}>
-                                <Icon name='md-arrow-back' />
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Title>{ this.state.post.title }</Title>
-                        </Body>
-                        <Right>
-                            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-                                <Icon name='menu' />
-                            </Button>
-                        </Right>
-                    </Header>
-                    <Content>
-                        <H3 style={{
-                            color: 'blue',
-                            margin: 20,
-                            textAlign: 'right'
-                        }}>{ this.state.post.category.category_name }</H3>
-                        <H1 style={{
-                            marginLeft: 20,
-                            marginRight: 20,
-                            textAlign: 'right'
-                        }}>{ this.state.post.title }</H1>
-                        <Text note style={{
-                            color: 'rgba(0, 0, 0, 0.7)',
-                            margin: 20,
-                            textAlign: 'right'
-                        }}>{ moment(this.state.post.created_at).format('MMM s, YYYY, HH:mm') }</Text>
-                        { this.renderSlider() }
-                        { this.renderBanner() }
+        if (this.state.post)
+        {
+            return (
+                <StyleProvider style={getTheme(material)}>
+                    <Container>
+                        <Header>
+                            <Left>
+                                <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                    <Icon name='md-arrow-back' />
+                                </Button>
+                            </Left>
+                            <Body>
+                                <Title>{ this.state.post.title }</Title>
+                            </Body>
+                            <Right>
+                                <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+                                    <Icon name='menu' />
+                                </Button>
+                            </Right>
+                        </Header>
+                        <Content>
+                            <H3 style={{
+                                color: 'blue',
+                                margin: 20,
+                                textAlign: 'right'
+                            }}>{ this.state.post.category.category_name }</H3>
+                            <H1 style={{
+                                marginLeft: 20,
+                                marginRight: 20,
+                                textAlign: 'right'
+                            }}>{ this.state.post.title }</H1>
+                            <Text note style={{
+                                color: 'rgba(0, 0, 0, 0.7)',
+                                margin: 20,
+                                textAlign: 'right'
+                            }}>{ moment(this.state.post.created_at).format('MMM s, YYYY, HH:mm') }</Text>
+                            { this.renderSlider() }
+                            { this.renderBanner() }
 
-                        <HTMLView
-                            style={{ margin: 10 }}
-                            value={ this.state.post.description }
-                            renderNode={ this.renderText }
-                        />
-                    </Content>
-                </Container>
-            </StyleProvider>
-        );
+                            <HTMLView
+                                style={{ margin: 10 }}
+                                value={ this.state.post.description }
+                                renderNode={ this.renderText }
+                            />
+                        </Content>
+                    </Container>
+                </StyleProvider>
+            );
+        }
+        else
+        {
+            return (
+                <StyleProvider style={getTheme(material)}>
+                    <Container>
+                        <Header>
+                            <Left>
+                                <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                    <Icon name='md-arrow-back' />
+                                </Button>
+                            </Left>
+                            <Body>
+                                
+                            </Body>
+                            <Right>
+                                <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
+                                    <Icon name='menu' />
+                                </Button>
+                            </Right>
+                        </Header>
+                        <Content>
+                            
+                        </Content>
+                    </Container>
+                </StyleProvider>
+            );
+        }
     }
 
     renderSlider() {
@@ -160,7 +191,7 @@ class PostDetailScreen extends Component {
     requestPost() {
         this.state.loading = true;
         this.setState(this.state);
-        fetch('http://jobs.mustachee.com/api/offer/' + this.state.post.id, {
+        fetch('http://jobs.mustachee.com/api/offer/' + (this.state.post ? this.state.post.id : this.state.post_id), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

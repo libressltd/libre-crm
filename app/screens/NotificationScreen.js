@@ -15,6 +15,10 @@ class NotificationScreen extends Component {
         }
     }
 
+    componentDidMount() {
+        this.requestNotification();
+    }
+
     render() {
         return (
             <StyleProvider style={getTheme(material)}>
@@ -52,6 +56,7 @@ class NotificationScreen extends Component {
         })
         .then((response) => response.json())
         .then((responseJson) => {
+            console.log(responseJson);
             this.setState({ ...this.state, data: responseJson });
             return responseJson;
         })
@@ -62,7 +67,7 @@ class NotificationScreen extends Component {
 
     didPressNotification(notification)
     {
-
+        console.log(notification);
     }
 }
 

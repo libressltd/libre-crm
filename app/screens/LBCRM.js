@@ -11,11 +11,12 @@ import { NotificationScreen } from 'libre-crm/app/screens/NotificationScreen';
 import OneSignal from 'react-native-onesignal';
 import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { Config } from '../../../../Config';
+import { NavigationActions } from 'react-navigation'
 
 class LBCRM extends Component {
     render() {
         return (
-            <ParentDrawerNavigator />
+            <ParentDrawerNavigator ref={nav => { this.navigator = nav; }}/>
         );
     }
 
@@ -37,8 +38,8 @@ class LBCRM extends Component {
                 }
             }
         });
-        OneSignal.addEventListener('received', this.onReceived);
-        OneSignal.addEventListener('opened', this.onOpened);
+        OneSignal.addEventListener('received', this.onReceived.bind(this));
+        OneSignal.addEventListener('opened', this.onOpened.bind(this));
         OneSignal.addEventListener('registered', this.onRegistered);
         OneSignal.addEventListener('ids', this.onIds);
     }
@@ -50,15 +51,16 @@ class LBCRM extends Component {
         OneSignal.removeEventListener('ids', this.onIds);
     }
 
-    onReceived(notification) {
-        console.log("Notification received: ", notification);
+    onReceived(notification)
+    {
+        
     }
 
     onOpened(openResult) {
-      console.log('Message: ', openResult.notification.payload.body);
-      console.log('Data: ', openResult.notification.payload.additionalData);
-      console.log('isActive: ', openResult.notification.isAppInFocus);
-      console.log('openResult: ', openResult);
+        if (openResult.notification.payload.additionalData)
+        {
+            this.navigator.dispatch({ type: 'Navigate', routeName: "PostDetail", params: { post_id: openResult.notification.payload.additionalData.post_id} });
+        }
     }
 
     onRegistered(notifData) {
@@ -136,6 +138,7 @@ const NotificationStack = StackNavigator({
     headerMode: 'none',
 });
 parent_screens['Notification'] = { screen: NotificationStack };
+parent_screens["PostDetail"] = { screen: PostDetailScreen };
 
 const ParentDrawerNavigator = DrawerNavigator(parent_screens, {
     drawerPosition: 'right',
