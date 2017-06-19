@@ -6,6 +6,7 @@ printMessage(
     "Copy customize & Config to your folder to make it run",
     "run following command one by one",
     "npm i react-native-code-push",
+    "npm i react-native-onesignal",
     "npm i native-base",
     "react-native link",
   ],

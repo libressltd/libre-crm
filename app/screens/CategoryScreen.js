@@ -11,6 +11,7 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 import { Config } from '../../../../Config';
+import { HomeHeader } from '../../../../customize/HomeHeader';
 
 class CategoryScreen extends Component {
 
@@ -36,7 +37,7 @@ class CategoryScreen extends Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>{ this.state.config.title }</Title>
+                            <Title><HomeHeader /></Title>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
