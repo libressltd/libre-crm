@@ -43,6 +43,9 @@ const Config = {
 			url: "http://jobs.mustachee.com/api/notification"
 		}
 	],
+	side_menu_style: {
+		backgroundColor: "#FF0000"
+	},
 	notification_screen: {
 		type: "NOTIFICATION",
 		title: "Notification",

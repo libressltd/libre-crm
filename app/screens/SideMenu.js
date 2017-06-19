@@ -8,6 +8,7 @@ import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 
 import { SideMenuItem } from '../../../../customize/SideMenuItem';
+import { SideMenuHeader } from '../../../../customize/SideMenuHeader';
 
 class SideMenu extends Component {
     constructor(props)
@@ -21,9 +22,10 @@ class SideMenu extends Component {
     render() {
         return (
             <StyleProvider style={getTheme(material)}>
-                <Container>
+                <Container style={{ backgroundColor: Config.side_menu_style.backgroundColor }}>
                     <Content>
                         <List
+                            itemHeader={() => <SideMenuHeader />}
                             dataArray={ this.state.items }
                             renderRow={ this.renderRow.bind(this) }
                         />

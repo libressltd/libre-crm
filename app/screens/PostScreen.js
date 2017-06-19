@@ -25,7 +25,7 @@ class PostScreen extends Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>{ this.state.category.title }</Title>
+                            <Title>{ this.state.category.category_name }</Title>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
