@@ -5,6 +5,9 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 
+import {
+    Alert
+} from 'react-native';
 
 class SettingScreen extends Component {
 
@@ -45,14 +48,14 @@ class SettingScreen extends Component {
                                 <Icon name="plane" />
                             </Left>
                             <Body>
-                                <Text>Airplane Mode</Text>
+                                <Text>{ this.state.config.setting_notification }</Text>
                             </Body>
                             <Right>
                                 <Switch value={ this.state.enable } onValueChange={(value) => this.setState({ ...this.state, enable: value})} />
                             </Right>
                         </ListItem>
                         <Button block success style={{ margin: 20 }} onPress={() => this.didPressSend()}>
-                            <Text>Send</Text>
+                            <Text>{ this.state.config.btn_send }</Text>
                         </Button>
                     </Content>
                 </Container>
@@ -103,6 +106,17 @@ class SettingScreen extends Component {
             })
             .then((response) => response.json())
             .then((responseJson) => {
+                Alert.alert(
+                    this.state.config.setting_alert_success,
+                    this.state.config.setting_alert_success_on,
+                    [
+                        {
+                            text: 'OK', onPress: () => {
+                        }, style: 'cancel'
+                        }
+                    ],
+                    {cancelable: false}
+                )
                 return responseJson;
             })
             .catch((error) => {

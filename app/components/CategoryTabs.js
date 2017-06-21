@@ -33,7 +33,7 @@ class CategoryTabs extends Component {
     render()
     {
         var all_tabs = [ 
-            <Tab heading="All category" key={ -1 }>
+            <Tab heading={ this.state.config.all_category }key={ -1 }>
                 <GridView
                     items={this.state.data}
                     itemsPerRow={ 2 }
