@@ -1,3 +1,4 @@
+import { SomeClass } from "someclass"
 const Config = {
 	base_url: "http://jobs.mustachee.com/",
 	side_menu: [
@@ -67,6 +68,12 @@ const Config = {
 			title: "اشعارات",
 			url: "http://jobs.mustachee.com/api/notification",
 			icon: "ios-notifications-outline",
+		},
+		{
+			id: "customize_item",
+			type: "CUSTOMIZE",
+			title: "customize_item",
+			class: SomeClass
 		}
 	],
 	side_menu_style: {

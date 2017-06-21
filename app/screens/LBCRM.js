@@ -128,6 +128,12 @@ for (var i = 0; i < Config.side_menu.length; i ++)
             }
             break;
         }
+        case "CUSTOMIZE":
+        {
+            parent_screens[item.id] = {
+                screen: item.class
+            }
+        }
     }
 }
 
