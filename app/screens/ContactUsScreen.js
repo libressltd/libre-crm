@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { View } from 'react-native';
 import { Container, Header, Keyboard,
     Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, Text, List, ListItem } from 'native-base';
 import getTheme from '../../../../native-base-theme/components';
@@ -42,18 +43,18 @@ class ContactUsScreen extends Component {
                     </Header>
                     <Content>
                         <Form>
-                            <Item stackedLabel>
-                                <Title style={{ textAlign: 'right' }}>{ this.state.config.username }</Title>
-                                <Input style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, name: text})}/>
-                            </Item>
-                            <Item stackedLabel>
+                            <View>
+                                <Label style={{ textAlign: 'right' }}>{ this.state.config.username }</Label>
+                                <Input style={{ textAlign: 'right', borderRadius: 10 }} onChangeText={(text) => this.setState({...this.state, name: text})}/>
+                            </View>
+                            <View stackedLabel>
                                 <Label style={{ textAlign: 'right' }}>{ this.state.config.useremail }</Label>
                                 <Input style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, email: text})}/>
-                            </Item>
-                            <Item stackedLabel>
+                            </View>
+                            <View stackedLabel>
                                 <Label style={{ textAlign: 'right' }}>{ this.state.config.desciption }</Label>
                                 <Input multiline={ true } style={{ height: 200, textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, message: text })}/>
-                            </Item>
+                            </View>
                         </Form>
                         <Button block success style={{ margin: 20 }} onPress={() => this.requestFeedback()}>
                             <Text>{ this.state.config.btn_send }</Text>
