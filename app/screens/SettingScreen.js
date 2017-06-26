@@ -70,7 +70,7 @@ class SettingScreen extends Component {
             {
                 return;
             }
-            fetch("https://onesignal.com/api/v1/players/" + result + "?app_id=3829214b-6b71-4af0-9874-31b3991d5e48", {
+            fetch("https://onesignal.com/api/v1/players/" + result + "?app_id=" + this.state.config.key_push, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

@@ -9,7 +9,7 @@ import { CategoryTabs } from 'libre-crm/app/components/CategoryTabs';
 
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, StyleProvider, Item, Input, Label, Form, Text, List, ListItem } from 'native-base';
 import getTheme from '../../../../native-base-theme/components';
-import material from '../../../../native-base-theme/variables/platform';
+import material from '../../../../native-base-theme/variables/material';
 import { Config } from '../../../../Config';
 import { HomeHeader } from '../../../../customize/HomeHeader';
 
@@ -45,9 +45,17 @@ class CategoryScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <CategoryTabs config={ this.state.config } didPressPost={ this.didPressPost.bind(this) } didPressCategory={ this.didPressCategory.bind(this) }/>
-                </Container>
+                           <CategoryTabs config={ this.state.config } didPressPost={ this.didPressPost.bind(this) } didPressCategory={ this.didPressCategory.bind(this) }/>
+                    </Container>
             </StyleProvider>
+        );
+    }
+
+    renderRow(category) {
+        return (
+            <View style={{backgroundColor: '#fff200'}}>
+                <CategoryCell category={category} didPressCategory={this.didPressCategory.bind(this)}/>
+            </View>
         );
     }
 

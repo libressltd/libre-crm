@@ -1,16 +1,15 @@
-import { SomeClass } from "someclass"
 const Config = {
 	base_url: "http://jobs.mustachee.com/",
 	side_menu: [
 		{
 			id: "category",
 			type: "CATEGORY",
-
 			title: "الصفحة الرئيسية",
 			all_category:"كل فئة",
-			url: "http://jobs.mustachee.com/api/category",
-			post_url: "http://jobs.mustachee.com/api/offer?category_id={category_id}",
-			post_detail_url: "http://jobs.mustachee.com/api/offer?category_id={category_id}",
+			url: "http://traveler-guide.mustachee.com/api/category",
+			post_url: "http://traveler-guide.mustachee.com/api/offer?category_id={category_id}",
+			post_detail_url: "http://traveler-guide.mustachee.com/api/offer?category_id={category_id}",
+			document_url:"http://traveler-guide.mustachee.com/api/pdfs",
 			icon: "ios-home-outline",
 		},
 		{
@@ -20,8 +19,9 @@ const Config = {
             btn_send:"حفظ",
             setting_alert_success: "نجاح",
             setting_notification: "الاشعارات",
-			url: "http://jobs.mustachee.com/api/contact_us",
+			url: "http://traveler-guide.mustachee.com/contact_us",
             btn_send:"حفظ",
+			key_push:"7437f523-42ad-4ce0-acd7-be3953a54f5b",
 			icon: "md-cog",
 		},
 		{
@@ -41,14 +41,14 @@ const Config = {
             error: "خطأ !",
             name_empty: "اسم فارغ!",
             message_empty: "رسالة فارغة!",
-			url: "http://jobs.mustachee.com/api/contact_us",
+			url: "http://traveler-guide.mustachee.com/api/feedback",
 			icon: "ios-mail-outline",
 		},
 		{
 			id: "about_us",
 			type: "ABOUT_US",
 			title: "من نحن",
-			url:"http://jobs.mustachee.com/api/setting?key=who_we_are",
+			url:"http://traveler-guide.mustachee.com/api/setting?key=who_we_are",
 			content: "<p>Test contentlakjsdlfkja sopidj aposijdf poaisjdf poi</p>",
 			icon: "ios-people-outline",
 		},
@@ -66,18 +66,12 @@ const Config = {
 			id: "notification",
 			type: "NOTIFICATION",
 			title: "اشعارات",
-			url: "http://jobs.mustachee.com/api/notification",
+			url: "http://traveler-guide.mustachee.com/api/notification",
 			icon: "ios-notifications-outline",
-		},
-		{
-			id: "customize_item",
-			type: "CUSTOMIZE",
-			title: "customize_item",
-			class: SomeClass
 		}
 	],
 	side_menu_style: {
-		backgroundColor: "#000"
+		backgroundColor: "#79d5fb"
 	},
 	notification_screen: {
 		type: "NOTIFICATION",

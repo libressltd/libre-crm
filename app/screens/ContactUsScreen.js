@@ -43,7 +43,7 @@ class ContactUsScreen extends Component {
                     <Content>
                         <Form>
                             <Item stackedLabel>
-                                <Label style={{ textAlign: 'right' }}>{ this.state.config.username }</Label>
+                                <Title style={{ textAlign: 'right' }}>{ this.state.config.username }</Title>
                                 <Input style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, name: text})}/>
                             </Item>
                             <Item stackedLabel>

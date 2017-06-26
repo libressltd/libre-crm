@@ -33,7 +33,7 @@ class CategoryTabs extends Component {
     render()
     {
         var all_tabs = [ 
-            <Tab heading={ this.state.config.all_category }key={ -1 }>
+            <Tab  heading={ this.state.config.all_category }key={ -1 }>
                 <GridView
                     items={this.state.data}
                     itemsPerRow={ 2 }
@@ -44,7 +44,7 @@ class CategoryTabs extends Component {
 
         all_tabs = all_tabs.concat(this.state.data.map((category) => {
             return (
-                <Tab heading={ category.category_name } key={ category.id }>
+                <Tab style={{backgroundColor:'#79d5fb'}} heading={ category.category_name } key={ category.id }>
                     <ProductList
                         config={ this.state.config }
                         category_id={ category.id }

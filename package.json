@@ -1,6 +1,6 @@
 {
   "name": "libre-crm",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "package for  crm system",
   "main": "index.js",
   "scripts": {

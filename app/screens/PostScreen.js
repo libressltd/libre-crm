@@ -18,7 +18,7 @@ class PostScreen extends Component {
         return (
             <StyleProvider style={getTheme(material)}>
                 <Container>
-                    <Header>
+                    <Header style={{ backgroundColor:'#0473bc'}}>
                         <Left>
                             <Button transparent onPress={() => this.props.navigation.goBack()}>
                                 <Icon name='md-arrow-back' />
@@ -33,7 +33,7 @@ class PostScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <CategoryTabs 
+                    <CategoryTabs
                         config={ this.state.config } 
                         didPressPost={ this.didPressPost.bind(this) } 
                         didPressCategory={ this.didPressCategory.bind(this) } 

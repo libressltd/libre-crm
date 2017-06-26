@@ -129,7 +129,7 @@ class PostDetailScreen extends Component {
                                 <View>
                                     <Image
                                         style={{ height: window.width, width: window.width }}
-                                        source={{uri: "http://jobs.mustachee.com/lbmedia/" + object}}
+                                        source={{uri: "http://traveler-guide.mustachee.com/lbmedia/" + object}}
                                     />
                                 </View>
                             );
@@ -141,7 +141,7 @@ class PostDetailScreen extends Component {
         else if (this.state.post.type == 2) {
             return (
                 <Video
-                    source={{uri: "http://jobs.mustachee.com/" + this.state.post.media.video}}
+                    source={{uri: "http://traveler-guide.mustachee.com/" + this.state.post.media.video}}
                     height={ window.width }
                     width={ window.width }
                 />
@@ -168,7 +168,7 @@ class PostDetailScreen extends Component {
                 <TouchableOpacity onPress={(event) => this.didPressBanner(event) } style={{marginTop: 10}}>
                     <Image
                         style={{width: window.width, height: window.height * 0.1}}
-                        source={{uri: "http://jobs.mustachee.com/lbmedia/" + this.state.post.banner_image_id}}
+                        source={{uri: "http://traveler-guide.mustachee.com/lbmedia/" + this.state.post.banner_image_id}}
                     />
                 </TouchableOpacity>
             );
@@ -189,9 +189,10 @@ class PostDetailScreen extends Component {
     }
 
     requestPost() {
+        console.log("nguyenngocdnagquang", "http://traveler-guide.mustachee.com/api/offer/" + (this.state.post ? this.state.post.id : this.state.post_id));
         this.state.loading = true;
         this.setState(this.state);
-        fetch('http://jobs.mustachee.com/api/offer/' + (this.state.post ? this.state.post.id : this.state.post_id), {
+        fetch('http://traveler-guide.mustachee.com/api/offer/' + (this.state.post ? this.state.post.id : this.state.post_id), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
