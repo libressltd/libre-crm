@@ -18,7 +18,7 @@ class PostScreen extends Component {
         return (
             <StyleProvider style={getTheme(material)}>
                 <Container>
-                    <Header style={{ backgroundColor:'#0473bc'}}>
+                    <Header>
                         <Left>
                             <Button transparent onPress={() => this.props.navigation.goBack()}>
                                 <Icon name='md-arrow-back' />

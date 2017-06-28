@@ -8,8 +8,6 @@ import { PostScreen } from 'libre-crm/app/screens/PostScreen';
 import { ContactUsScreen } from 'libre-crm/app/screens/ContactUsScreen';
 import { SettingScreen } from 'libre-crm/app/screens/SettingScreen';
 import { NotificationScreen } from 'libre-crm/app/screens/NotificationScreen';
-import { FristScreen } from '../../../../customize/FristScreen';
-import { DocumentScreen } from  '../../../../customize/DocumentScreen'
 import OneSignal from 'react-native-onesignal';
 import { DrawerView, StackNavigator, DrawerNavigator } from 'react-navigation';
 import { Config } from '../../../../Config';
@@ -91,8 +89,6 @@ for (var i = 0; i < Config.side_menu.length; i ++)
         case "CATEGORY": 
         {
             const CategoryStack = StackNavigator({
-                Frist: {screen: FristScreen},
-                Document: {screen: DocumentScreen},
                 Category: { screen: CategoryScreen },
                 Post: {screen: PostScreen},
                 PostDetail: {screen: PostDetailScreen},
