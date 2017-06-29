@@ -44,7 +44,7 @@ class CategoryTabs extends Component {
 
         all_tabs = all_tabs.concat(this.state.data.map((category) => {
             return (
-                <Tab style={{backgroundColor:'#79d5fb'}} heading={ category.category_name } key={ category.id }>
+                <Tab heading={ category.category_name } key={ category.id }>
                     <ProductList
                         config={ this.state.config }
                         category_id={ category.id }
