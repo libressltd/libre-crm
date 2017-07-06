@@ -88,14 +88,6 @@ class CategoryScreen extends Component {
             console.error(error);
         }).done();
     }
-
-    // didPressRightBarButton() {
-    //     this.props.navigation.navigate("DrawerOpen");
-    // }
-
-    // didPressNotificationButton() {
-    //     this.props.navigation.navigate("Notification");
-    // }
 }
 
 

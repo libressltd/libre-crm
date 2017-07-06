@@ -24,6 +24,7 @@ import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 import moment from 'moment';
 import Swiper from 'react-native-swiper';
+import { Config } from '../../../../Config';
 
 class PostDetailScreen extends Component {
 
@@ -129,7 +130,7 @@ class PostDetailScreen extends Component {
                                 <View>
                                     <Image
                                         style={{ height: window.width, width: window.width }}
-                                        source={{uri: "http://traveler-guide.mustachee.com/lbmedia/" + object}}
+                                        source={{uri: Config.media(object) }}
                                     />
                                 </View>
                             );
@@ -141,7 +142,7 @@ class PostDetailScreen extends Component {
         else if (this.state.post.type == 2) {
             return (
                 <Video
-                    source={{uri: "http://traveler-guide.mustachee.com/" + this.state.post.media.video}}
+                    source={{uri: Config.media(this.state.post.media.video) }}
                     height={ window.width }
                     width={ window.width }
                 />
@@ -168,7 +169,7 @@ class PostDetailScreen extends Component {
                 <TouchableOpacity onPress={(event) => this.didPressBanner(event) } style={{marginTop: 10}}>
                     <Image
                         style={{width: window.width, height: window.height * 0.1}}
-                        source={{uri: "http://traveler-guide.mustachee.com/lbmedia/" + this.state.post.banner_image_id}}
+                        source={{uri: Config.media(this.state.post.banner_image_id) }}
                     />
                 </TouchableOpacity>
             );
@@ -189,10 +190,11 @@ class PostDetailScreen extends Component {
     }
 
     requestPost() {
-        console.log("nguyenngocdnagquang", "http://traveler-guide.mustachee.com/api/offer/" + (this.state.post ? this.state.post.id : this.state.post_id));
         this.state.loading = true;
         this.setState(this.state);
-        fetch('http://traveler-guide.mustachee.com/api/offer/' + (this.state.post ? this.state.post.id : this.state.post_id), {
+        
+        var config_url = this.props.config.post_detail_url.replace("{post_id}", (this.state.post ? this.state.post.id : this.state.post_id));
+        fetch(config_url, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

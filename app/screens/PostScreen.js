@@ -46,7 +46,6 @@ class PostScreen extends Component {
 
     didPressPost(post)
     {
-        console.log("post", post);
         this.props.navigation.navigate("PostDetail", { post: post });
     }
 

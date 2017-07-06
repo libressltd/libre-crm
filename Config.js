@@ -8,7 +8,7 @@ const Config = {
 			all_category:"كل فئة",
 			url: "http://traveler-guide.mustachee.com/api/category",
 			post_url: "http://traveler-guide.mustachee.com/api/offer?category_id={category_id}",
-			post_detail_url: "http://traveler-guide.mustachee.com/api/offer?category_id={category_id}",
+			post_detail_url: "http://traveler-guide.mustachee.com/api/offer/{post_id}",
 			document_url:"http://traveler-guide.mustachee.com/api/pdfs",
 			icon: "ios-home-outline",
 		},
@@ -77,6 +77,9 @@ const Config = {
 		type: "NOTIFICATION",
 		title: "اشعارات",
 		url: "http://jobs.mustachee.com/api/notification"
+	},
+	media: function(media_id) {
+		return "http://traveler-guide.mustachee.com/lbmedia/" + media_id
 	}
 }
 module.exports = { Config }
