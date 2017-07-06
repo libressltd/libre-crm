@@ -46,7 +46,7 @@ class PostScreen extends Component {
 
     didPressPost(post)
     {
-        this.props.navigation.navigate("PostDetail", { post: post });
+        this.props.navigation.navigate("PostDetail", { post: post, config: this.state.config });
     }
 
     didPressCategory(category)
