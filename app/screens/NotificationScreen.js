@@ -67,6 +67,10 @@ class NotificationScreen extends Component {
 
     didPressNotification(notification)
     {
+        if (notification.post_id)
+        {
+            this.props.navigation.navigate("PostDetail", { post: post, config: this.state.config });
+        }
         console.log(notification);
     }
 }

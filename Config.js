@@ -67,6 +67,7 @@ const Config = {
 			type: "NOTIFICATION",
 			title: "اشعارات",
 			url: "http://traveler-guide.mustachee.com/api/notification",
+			post_detail_url: "http://traveler-guide.mustachee.com/api/offer/{post_id}",
 			icon: "ios-notifications-outline",
 		}
 	],
