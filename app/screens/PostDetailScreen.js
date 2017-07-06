@@ -34,7 +34,8 @@ class PostDetailScreen extends Component {
         this.state = {
             post_id: params.post_id,
             post: params.post,
-            loading: false
+            loading: false,
+            config: this.props.navigation.state.params.config
         };
         this.requestPost();
     }
@@ -193,7 +194,7 @@ class PostDetailScreen extends Component {
         this.state.loading = true;
         this.setState(this.state);
         
-        var config_url = this.props.config.post_detail_url.replace("{post_id}", (this.state.post ? this.state.post.id : this.state.post_id));
+        var config_url = this.state.config.post_detail_url.replace("{post_id}", (this.state.post ? this.state.post.id : this.state.post_id));
         fetch(config_url, {
             method: 'GET',
             headers: {
