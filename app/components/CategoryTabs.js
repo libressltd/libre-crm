@@ -34,11 +34,7 @@ class CategoryTabs extends Component {
     render()
     {
         var all_tabs = [ 
-<<<<<<< HEAD
             <Tab style = {{ backgroundColor: this.state.config.tab_color }}  heading={ this.state.config.all_category }key={ -1 }>
-=======
-            <Tab style ={{ backgroundColor: this.state.config.tab_color }}  heading={ this.state.config.all_category }key={ -1 }>
->>>>>>> origin/master
                 <GridView
                     items={this.state.data}
                     itemsPerRow={ 2 }
@@ -49,11 +45,7 @@ class CategoryTabs extends Component {
 
         all_tabs = all_tabs.concat(this.state.data.map((category) => {
             return (
-<<<<<<< HEAD
                 <Tab style = {{backgroundColor: this.state.config.tab_color }} heading={ category.category_name } key={ category.id }>
-=======
-                <Tab style ={{ backgroundColor: this.state.config.tab_color }} heading={ category.category_name } key={ category.id }>
->>>>>>> origin/master
                     <ProductList
                         config={ this.state.config }
                         category_id={ category.id }
