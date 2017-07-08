@@ -6,8 +6,7 @@ import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 
 import {
-    Alert,
-    TextInput
+    Alert
 } from 'react-native';
 
 class ContactUsScreen extends Component {
@@ -43,11 +42,11 @@ class ContactUsScreen extends Component {
                     </Header>
                     <Content>
                         <Label style={{ textAlign: 'right', paddingRight: 5 }}>{ this.state.config.username }</Label>
-                        <TextInput style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, name: text})}/>
+                        <Input style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, name: text})}/>
                         <Label style={{ textAlign: 'right', paddingRight: 5 }}>{ this.state.config.useremail }</Label>
-                        <TextInput style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, email: text})}/>
+                        <Input style={{ textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, email: text})}/>
                         <Label style={{ textAlign: 'right', paddingRight: 5 }}>{ this.state.config.desciption }</Label>
-                        <TextInput multiline={ true } style={{ height: 200, textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, message: text })}/>
+                        <Input multiline={ true } style={{ height: 200, textAlign: 'right' }} onChangeText={(text) => this.setState({...this.state, message: text })}/>
                         <Button block success style={{ margin: 20 }} onPress={() => this.requestFeedback()}>
                             <Text>{ this.state.config.btn_send }</Text>
                         </Button>
