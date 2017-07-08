@@ -34,7 +34,7 @@ class NotificationScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <Content>
+                    <Content style = {{ backgroundColor: this.state.config.color_bg }}>
                         <List
                             dataArray={ this.state.data }
                             renderRow={(item) => <NotificationCell item={ item } didPressNotification={ this.didPressNotification.bind(this) }/>}

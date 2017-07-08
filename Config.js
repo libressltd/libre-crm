@@ -11,6 +11,7 @@ const Config = {
 			post_detail_url: "http://traveler-guide.mustachee.com/api/offer/{post_id}",
 			document_url:"http://traveler-guide.mustachee.com/api/pdfs",
 			icon: "ios-home-outline",
+			tab_color:"#ffffff"
 		},
 		{
 			id: "setting",
@@ -51,6 +52,8 @@ const Config = {
 			url:"http://traveler-guide.mustachee.com/api/setting?key=who_we_are",
 			content: "<p>Test contentlakjsdlfkja sopidj aposijdf poaisjdf poi</p>",
 			icon: "ios-people-outline",
+			color_bg: "#fdfec7",
+			text_color: "#000"
 		},
 		{
 			id: "about_us",
@@ -69,6 +72,7 @@ const Config = {
 			url: "http://traveler-guide.mustachee.com/api/notification",
 			post_detail_url: "http://traveler-guide.mustachee.com/api/offer/{post_id}",
 			icon: "ios-notifications-outline",
+			color_bg: "#ffffff"
 		}
 	],
 	side_menu_style: {
@@ -77,7 +81,8 @@ const Config = {
 	notification_screen: {
 		type: "NOTIFICATION",
 		title: "اشعارات",
-		url: "http://jobs.mustachee.com/api/notification"
+		url: "http://jobs.mustachee.com/api/notification",
+		color_bg: "#ffffff"
 	},
 	media: function(media_id) {
 		return "http://traveler-guide.mustachee.com/lbmedia/" + media_id
