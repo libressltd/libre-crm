@@ -39,8 +39,9 @@ class AboutUsScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <Content>
+                    <Content  style = {{ backgroundColor: this.state.config.color_bg }}>
                         <HTMLView
+
                             // value={ this.state.config ? (this.state.config.url != null ?
                             //     (this.state.config.url) :  this.state.config.content) : ""}
                             value = { this.state.content }
@@ -55,12 +56,12 @@ class AboutUsScreen extends Component {
     {
         if (node.name == 'p') {
             return (
-                <Text style={{ textAlign: 'right', paddingRight: 8, paddingLeft: 8 }}>{ defaultRenderer(node.children, node) }</Text>
+                <Text style={{ textAlign: 'right', paddingRight: 8, paddingLeft: 8, color: '#000000' }}>{ defaultRenderer(node.children, node) }</Text>
             );
         }
         if (node.name == 'h1') {
             return (
-                <Text style={{ textAlign: 'right', fontSize: 21, fontWeight: 'bold', paddingRight: 8, paddingLeft: 8 }}>{ defaultRenderer(node.children, node) }</Text>
+                <Text style={{ textAlign: 'right', fontSize: 21, fontWeight: 'bold',color: '#000000' , paddingRight: 8, paddingLeft: 8 }}>{ defaultRenderer(node.children, node) }</Text>
             );
         }
     }
