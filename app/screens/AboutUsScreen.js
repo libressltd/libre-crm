@@ -41,6 +41,7 @@ class AboutUsScreen extends Component {
                     </Header>
                     <Content>
                         <HTMLView
+
                             // value={ this.state.config ? (this.state.config.url != null ?
                             //     (this.state.config.url) :  this.state.config.content) : ""}
                             value = { this.state.content }
@@ -60,7 +61,7 @@ class AboutUsScreen extends Component {
         }
         if (node.name == 'h1') {
             return (
-                <Text style={{ textAlign: 'right', fontSize: 21, fontWeight: 'bold', paddingRight: 8, paddingLeft: 8 }}>{ defaultRenderer(node.children, node) }</Text>
+                <Text style={{ textAlign: 'right', fontSize: 21, fontWeight: 'bold' , paddingRight: 8, paddingLeft: 8 }}>{ defaultRenderer(node.children, node) }</Text>
             );
         }
     }
