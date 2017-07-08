@@ -72,7 +72,7 @@ const Config = {
 			url: "http://traveler-guide.mustachee.com/api/notification",
 			post_detail_url: "http://traveler-guide.mustachee.com/api/offer/{post_id}",
 			icon: "ios-notifications-outline",
-			color_bg: "ffffff"
+			color_bg: "#ffffff"
 		}
 	],
 	side_menu_style: {
@@ -82,7 +82,7 @@ const Config = {
 		type: "NOTIFICATION",
 		title: "اشعارات",
 		url: "http://jobs.mustachee.com/api/notification",
-		color_bg: "ffffff"
+		color_bg: "#ffffff"
 	},
 	media: function(media_id) {
 		return "http://traveler-guide.mustachee.com/lbmedia/" + media_id
