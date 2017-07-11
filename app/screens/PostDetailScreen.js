@@ -81,9 +81,8 @@ class PostDetailScreen extends Component {
                             { this.renderBanner() }
 
                             <HTMLView
-                                style={{ margin: 10 }}
-                                value={ this.state.post.description }
-                                renderNode={ this.renderText }
+                                value={ this.state.post.description || "" }
+                                nodeComponentProps={{ style: { textAlign: 'right' }}}
                             />
                         </Content>
                     </Container>
@@ -119,6 +118,7 @@ class PostDetailScreen extends Component {
         }
     }
 
+
     renderSlider() {
         const window = Dimensions.get('window');
         if (this.state.post.type == 1) {
@@ -126,7 +126,6 @@ class PostDetailScreen extends Component {
                 return (
                     <Swiper height={ window.width } width={ window.width }>
                         { this.state.post.media.images.map(function (object, i) {
-                            console.log(object);
                             return (
                                 <View>
                                     <Image
