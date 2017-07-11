@@ -1,6 +1,6 @@
 /**
  * Sample React Native App
- * https://github.com/facebook/react-native
+ * https://g10hub.com/facebook/react-native
  * @flow
  */
 
@@ -83,6 +83,7 @@ class PostDetailScreen extends Component {
                             <HTMLView
                                 value={ this.state.post.description || "" }
                                 nodeComponentProps={{ style: { textAlign: 'right' }}}
+                                style={{ margin: 10 }}
                             />
                         </Content>
                     </Container>
