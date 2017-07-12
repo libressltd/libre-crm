@@ -57,7 +57,9 @@ class CategoryTabs extends Component {
         if (this.state.selected_index === false)
         {
             return (
-                <View />
+                <Tabs renderTabBar={()=> <ScrollableTab />} initialPage={ 0 }>
+                    { all_tabs }
+                </Tabs>
             );
         }
         else
