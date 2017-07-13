@@ -14,7 +14,7 @@ import material from '../../../../native-base-theme/variables/platform';
 import GridView from 'react-native-grid-view'
 import { CategoryCell } from '../../../../customize/CategoryCell';
 import { ProductList } from 'libre-crm/app/components/ProductList'
-var ScrollableTabView = require('react-native-scrollable-tab-view');
+import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 
 class CategoryTabs extends Component {
 
@@ -57,7 +57,7 @@ class CategoryTabs extends Component {
         if (this.state.selected_index === false)
         {
             return (
-                <ScrollableTabView>
+                <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
                     { all_tabs }
                 </ScrollableTabView>
             );
@@ -65,7 +65,7 @@ class CategoryTabs extends Component {
         else
         {
             return (
-                <ScrollableTabView>
+                <ScrollableTabView renderTabBar={() => <ScrollableTabBar />} initialPage={this.state.selected_index}>
                     { all_tabs }
                 </ScrollableTabView>
             );
