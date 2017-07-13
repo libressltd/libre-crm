@@ -14,7 +14,7 @@ import material from '../../../../native-base-theme/variables/platform';
 import GridView from 'react-native-grid-view'
 import { CategoryCell } from '../../../../customize/CategoryCell';
 import { ProductList } from 'libre-crm/app/components/ProductList'
-
+var ScrollableTabView = require('react-native-scrollable-tab-view');
 
 class CategoryTabs extends Component {
 
@@ -34,40 +34,40 @@ class CategoryTabs extends Component {
     render()
     {
         var all_tabs = [ 
-            <Tab style = {{ backgroundColor: this.state.config.tab_color }}  heading={ this.state.config.all_category }key={ -1 }>
+            <View style = {{ backgroundColor: this.state.config.tab_color }}  tabLabel={ this.state.config.all_category } key={ -1 }>
                 <GridView
                     items={this.state.data}
                     itemsPerRow={ 2 }
                     renderItem={ this.renderRow.bind(this) }
                 />
-            </Tab>
+            </View>
         ];
 
         all_tabs = all_tabs.concat(this.state.data.map((category) => {
             return (
-                <Tab style = {{backgroundColor: this.state.config.tab_color }} heading={ category.category_name } key={ category.id }>
+                <View style = {{backgroundColor: this.state.config.tab_color }} tabLabel={ category.category_name } key={ category.id }>
                     <ProductList
                         config={ this.state.config }
                         category_id={ category.id }
                         didPressPost={ this.props.didPressPost }
                     />
-                </Tab>
+                </View>
             )
         }));
         if (this.state.selected_index === false)
         {
             return (
-                <Tabs renderTabBar={()=> <ScrollableTab />} initialPage={ 0 }>
+                <ScrollableTabView>
                     { all_tabs }
-                </Tabs>
+                </ScrollableTabView>
             );
         }
         else
         {
             return (
-                <Tabs renderTabBar={()=> <ScrollableTab />} initialPage={ this.state.selected_index }>
+                <ScrollableTabView>
                     { all_tabs }
-                </Tabs>
+                </ScrollableTabView>
             );
         }
     }
