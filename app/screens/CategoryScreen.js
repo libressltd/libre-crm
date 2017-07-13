@@ -60,9 +60,11 @@ class CategoryScreen extends Component {
 
     renderRow(category) {
         return (
-            <View style={{backgroundColor: '#fff200'}}>
-                <CategoryCell category={category} didPressCategory={this.didPressCategory.bind(this)}/>
-            </View>
+            <CategoryCell 
+                key={ category.id } 
+                item={ category } 
+                didPressCategory={() => this.didPressCategory(category)}
+            />
         );
     }
 
