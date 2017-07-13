@@ -33,11 +33,10 @@ class PostScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <CategoryTabs
-                        config={ this.state.config } 
-                        didPressPost={ this.didPressPost.bind(this) } 
-                        didPressCategory={ this.didPressCategory.bind(this) } 
-                        selected_category={ this.props.navigation.state.params.category }
+                    <ProductList
+                        config={ this.state.config }
+                        category_id={ this.props.navigation.state.params.category.id }
+                        didPressPost={ this.didPressPost.bind(this) }
                     />
                 </Container>
             </StyleProvider>

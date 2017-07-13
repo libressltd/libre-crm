@@ -45,7 +45,11 @@ class CategoryScreen extends Component {
                             </Button>
                         </Right>
                     </Header>
-                    <CategoryTabs config={ this.state.config } didPressPost={ this.didPressPost.bind(this) } didPressCategory={ this.didPressCategory.bind(this) }/>
+                    <GridView
+                        items={this.state.data}
+                        itemsPerRow={ 2 }
+                        renderItem={ this.renderRow.bind(this) }
+                    />
                 </Container>
             </StyleProvider>
         );
