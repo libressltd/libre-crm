@@ -12,6 +12,7 @@ import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 import { Config } from '../../../../Config';
 import { HomeHeader } from '../../../../customize/HomeHeader';
+import GridView from 'react-native-grid-view'
 
 class CategoryScreen extends Component {
 
