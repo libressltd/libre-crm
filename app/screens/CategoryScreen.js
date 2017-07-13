@@ -13,6 +13,8 @@ import material from '../../../../native-base-theme/variables/platform';
 import { Config } from '../../../../Config';
 import { HomeHeader } from '../../../../customize/HomeHeader';
 import GridView from 'react-native-grid-view'
+import { View } from 'react-native';
+import { CategoryCell } from '../../../../customize/CategoryCell';
 
 class CategoryScreen extends Component {
 

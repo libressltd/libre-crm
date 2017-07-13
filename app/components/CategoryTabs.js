@@ -13,7 +13,7 @@ import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 import GridView from 'react-native-grid-view'
 import { CategoryCell } from '../../../../customize/CategoryCell';
-import { ProductList } from 'libre-crm/app/components/ProductList'
+import { ProductList } from 'libre-crm/app/components/ProductList';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 
 class CategoryTabs extends Component {

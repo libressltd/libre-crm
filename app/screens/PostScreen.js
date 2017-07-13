@@ -4,6 +4,7 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 import getTheme from '../../../../native-base-theme/components';
 import material from '../../../../native-base-theme/variables/platform';
 import { CategoryTabs } from 'libre-crm/app/components/CategoryTabs';
+import { ProductList } from 'libre-crm/app/components/ProductList';
 
 class PostScreen extends Component {
 
