@@ -57,7 +57,10 @@ class CategoryTabs extends Component {
         if (this.state.selected_index === false)
         {
             return (
-                <ScrollableTabView renderTabBar={() => <ScrollableTabBar />}>
+                <ScrollableTabView 
+                    renderTabBar={() => <ScrollableTabBar />}
+                    ref={(tab) => this.tab = tab}
+                >
                     { all_tabs }
                 </ScrollableTabView>
             );
@@ -65,7 +68,11 @@ class CategoryTabs extends Component {
         else
         {
             return (
-                <ScrollableTabView renderTabBar={() => <ScrollableTabBar />} initialPage={this.state.selected_index}>
+                <ScrollableTabView 
+                    renderTabBar={() => <ScrollableTabBar />} 
+                    initialPage={this.state.selected_index}
+                    ref={(tab) => this.tab = tab}
+                >
                     { all_tabs }
                 </ScrollableTabView>
             );
@@ -73,8 +80,22 @@ class CategoryTabs extends Component {
     }
 
     renderRow(category) {
+        var i;
+        for (i = 0; i < this.state.data.length; i ++)
+        {
+            var item = this.state.data[i];
+            if (item.id == category.id)
+            {
+                break;
+            }
+        }
+        console.log(i);
         return (
-            <CategoryCell key={ category.id } item={ category } didPressCategory={this.props.didPressCategory.bind(this)}/>
+            <CategoryCell 
+                key={ category.id } 
+                item={ category } 
+                didPressCategory={() => this.tab.goToPage(i + 1)}
+            />
         );
     }
 
