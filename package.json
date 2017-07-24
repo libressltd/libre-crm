@@ -1,31 +1,56 @@
 {
-  "name": "libre-crm",
-  "version": "1.4.4",
-  "description": "package for  crm system",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "libre-crm",
+  "_id": "libre-crm@1.4.5",
+  "_inBundle": false,
+  "_integrity": "sha512-ls3CbzIGH3iwpbF5IRWc73f4CYwmdZ15QNTKttNjBtQAoYrBQUwNUzKbRmimfJ9iMI7CkHdNT3oJmSXM+8OLHw==",
+  "_location": "/libre-crm",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "libre-crm",
+    "name": "libre-crm",
+    "escapedName": "libre-crm",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/libre-crm/-/libre-crm-1.4.4.tgz",
+  "_shasum": "a68e870beaf7c76c44ef7b2ccf0f4c63a8d8f331",
+  "_spec": "libre-crm",
+  "_where": "/Users/binhnguyenxuan/Desktop/QuangOutSource/06-Clone/06-Clone/Travel",
+  "author": {
+    "name": "Eugene Nguyen Xuan Binh"
+  },
+  "bugs": {
+    "url": "https://github.com/libressltd/libre-crm/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "moment": "^2.18.1",
+    "react-native-grid-view": "*",
+    "react-native-htmlview": "*",
+    "react-native-scrollable-tab-view": "*",
+    "react-native-share": "*",
+    "react-native-swiper": "*",
+    "react-navigation": "*"
+  },
+  "deprecated": false,
+  "description": "package for  crm system",
+  "homepage": "https://github.com/libressltd/libre-crm#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "libre-crm",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/libressltd/libre-crm.git"
   },
-  "author": "Eugene Nguyen Xuan Binh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/libressltd/libre-crm/issues"
-  },
-  "homepage": "https://github.com/libressltd/libre-crm#readme",
-  "dependencies": {
-    "react-navigation": "*",
-    "react-native-share": "*",
-    "react-native-swiper": "*",
-    "react-native-grid-view": "*",
-    "react-native-htmlview": "*",
-    "react-native-scrollable-tab-view": "*",
-    "moment": "^2.18.1"
-  },
   "scripts": {
     "postinstall": "node addEjectScript.js"
-  }
+  },
+  "version": "1.4.5"
 }

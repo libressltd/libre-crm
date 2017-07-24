@@ -15,7 +15,8 @@ import {
     Linking,
     ScrollView,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    NetInfo
 } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 
@@ -25,6 +26,7 @@ import material from '../../../../native-base-theme/variables/platform';
 import moment from 'moment';
 import Swiper from 'react-native-swiper';
 import { Config } from '../../../../Config';
+import Model from '../../../../customize/Model';
 
 class PostDetailScreen extends Component {
 
@@ -37,7 +39,19 @@ class PostDetailScreen extends Component {
             loading: false,
             config: this.props.navigation.state.params.config
         };
-        this.requestPost();
+    }
+
+    componentDidMount() {
+        NetInfo.isConnected.fetch().then(isConnected => {
+                this.requestPost(isConnected);
+          });
+          function handleFirstConnectivityChange(isConnected) {
+              NetInfo.isConnected.removeEventListener(
+                'change',
+                handleFirstConnectivityChange
+              );
+          }
+          NetInfo.isConnected.addEventListener('change', handleFirstConnectivityChange);
     }
 
     render() {
@@ -53,7 +67,7 @@ class PostDetailScreen extends Component {
                                 </Button>
                             </Left>
                             <Body>
-                                <Title>{ this.state.post.title }</Title>
+                                <Title>{ this.state.post.title || ""}</Title>
                             </Body>
                             <Right>
                                 <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
@@ -62,29 +76,26 @@ class PostDetailScreen extends Component {
                             </Right>
                         </Header>
                         <Content>
-                            <H3 style={{
-                                color: 'blue',
-                                margin: 20,
-                                textAlign: 'right'
-                            }}>{ this.state.post.category.category_name }</H3>
-                            <H1 style={{
-                                marginLeft: 20,
-                                marginRight: 20,
-                                textAlign: 'right'
-                            }}>{ this.state.post.title }</H1>
-                            <Text note style={{
-                                color: 'rgba(0, 0, 0, 0.7)',
-                                margin: 20,
-                                textAlign: 'right'
-                            }}>{ moment(this.state.post.created_at).format('MMM s, YYYY, HH:mm') }</Text>
-                            { this.renderSlider() }
-                            { this.renderBanner() }
-
+                          <View>
+                          <H3 style={{
+                              marginTop: 5,
+                              marginLeft: 20,
+                              marginRight: 20,
+                              textAlign: 'right'
+                          }}>{ this.state.post.title || ""}</H3>
+                          <Text note style={{
+                              color: 'rgba(0, 0, 0, 0.7)',
+                              margin: 20,
+                              textAlign: 'right'
+                          }}>{ moment(this.state.post.created_at).format('MMM s, YYYY, HH:mm') }</Text>
+                          { this.renderSlider() }
+                          { this.renderBanner() }
                             <HTMLView
                                 value={ this.state.post.description || "" }
                                 nodeComponentProps={{ style: { textAlign: 'right' }}}
                                 style={{ margin: 10 }}
                             />
+                          </View>
                         </Content>
                     </Container>
                 </StyleProvider>
@@ -102,7 +113,7 @@ class PostDetailScreen extends Component {
                                 </Button>
                             </Left>
                             <Body>
-                                
+
                             </Body>
                             <Right>
                                 <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
@@ -111,7 +122,7 @@ class PostDetailScreen extends Component {
                             </Right>
                         </Header>
                         <Content>
-                            
+
                         </Content>
                     </Container>
                 </StyleProvider>
@@ -157,7 +168,7 @@ class PostDetailScreen extends Component {
 
             return (
                 <TouchableOpacity onPress={(event) => this.didPressYoutube(event) }>
-                
+
                 </TouchableOpacity>
             );
         }
@@ -190,30 +201,71 @@ class PostDetailScreen extends Component {
         Linking.openURL(this.state.post.media.youtube);
     }
 
-    requestPost() {
+    requestPost(isConnected) {
         this.state.loading = true;
         this.setState(this.state);
-        
-        var config_url = this.state.config.post_detail_url.replace("{post_id}", (this.state.post ? this.state.post.id : this.state.post_id));
-        fetch(config_url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+        //this.savePost(this.state.post, false);
+        if(isConnected == false){
+            this.state.loading = true;
+            var query = '';
+            if(this.state.post != null){
+                query = 'id = "' + this.state.post.id + '"';
+            } else {
+                query = 'id = "' + this.state.post_id + '"';
             }
-        })
-            .then((response) => response.json())
-            .then((responseJson) => {
-                console.log(responseJson);
-                this.state.post = responseJson;
-                this.state.loading = false;
-                this.setState(this.state);
-                return responseJson;
+            let postData = Model.objects('PostDetail').filtered(query);
+            this.state.post = postData[0];
+            this.setState(this.state);
+        } else {
+            var config_url = this.state.config.post_detail_url.replace("{post_id}", (this.state.post ? this.state.post.id : this.state.post_id));
+            console.log("tndasda", config_url);
+            fetch(config_url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
             })
-            .catch((error) => {
-                console.error(error);
-            }).done();
-    }
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    this.state.post = responseJson;
+                    this.state.loading = false;
+                    this.setState(this.state);
+                    this.savePost(responseJson, isConnected);
+
+                    return responseJson;
+                })
+                .catch((error) => {
+                    console.log("bisaoday", error);
+                    console.error(error);
+                }).done();
+        }
+
+      }
+
+      savePost(post, isConnected){
+          var query = '';
+          if(this.state.post != null){
+              query = 'id = "' + this.state.post.id + '"';
+          } else {
+              query = 'id = "' + this.state.post_id + '"';
+          }
+          let postData = Model.objects('PostDetail').filtered(query);
+          //Kiem tra intenet va thuc hien
+          if(isConnected == true){
+              //Xoa phan tu cu, va them phan tu moi
+              Model.write(() => {
+                    Model.delete(postData)
+                });
+              Model.write(() => {
+                Model.create('PostDetail', {id: post.id ,title: post.title,short_description: post.short_description, description: post.description, created_at: post.created_at});
+              });
+          } else {
+              //Hien thi phan tu da save
+              this.state.post = postData[0];
+              this.setState(this.state);
+          }
+      }
 }
 
 module.exports = {PostDetailScreen}
