@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { Platform } from 'react-native';
 import Share from "react-native-share";
 import { Config } from '../../../../Config';
@@ -10,6 +12,8 @@ import material from '../../../../native-base-theme/variables/platform';
 import { SideMenuItem } from '../../../../customize/SideMenuItem';
 import { SideMenuHeader } from '../../../../customize/SideMenuHeader';
 import { SideMenuFooter } from '../../../../customize/SideMenuFooter';
+
+import { requestCategory } from '../../actions/category';
 
 class SideMenu extends Component {
     constructor(props)
@@ -25,11 +29,22 @@ class SideMenu extends Component {
             <StyleProvider style={getTheme(material)}>
                 <Container style={{ backgroundColor: Config.side_menu_style.backgroundColor }}>
                     <Content>
-                        <List
-                            renderHeader={() => <SideMenuHeader />}
-                            dataArray={ this.state.items }
-                            renderRow={ this.renderRow.bind(this) }
-                        />
+                        <List>
+                            <SideMenuHeader />
+                            { Config.side_menu && Config.side_menu.map((item, index) => (
+                                <SideMenuItem key={ index }item={ item } didPressRow={ this.didPressRow.bind(this) }/>
+                            ))}
+                            <ListItem icon onPress={() => this.props.dispatch(requestCategory(true))}>
+                                <Body style ={{ height: 40}}>
+                                    <Title style={{ textAlign: "right", color: "#fff", marginRight: 8 }}>
+                                        شغل وضع عدم الاتصال بالانترنت
+                                    </Title>
+                                </Body>
+                                <Right style ={{ height: 40}}>
+                                    <Icon name="md-cloud-download" size={ 30 } style={{ color: "#FFF" }}/>
+                                </Right>
+                            </ListItem>
+                        </List>
                     </Content>
                     <SideMenuFooter />
                 </Container>
@@ -70,4 +85,12 @@ class SideMenu extends Component {
     }
 };
 
-module.exports = { SideMenu };
+
+function mapStateToProps(state)
+{
+    return {
+
+    };
+}
+
+export default connect(mapStateToProps)(SideMenu)

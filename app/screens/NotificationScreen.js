@@ -72,7 +72,7 @@ class NotificationScreen extends Component {
             .then((responseJson) => {
                 console.log(responseJson);
                 this.setState({ ...this.state, data: responseJson });
-                this.saveNotification(responseJson, isConnected);
+                // this.saveNotification(responseJson, isConnected);
                 return responseJson;
             })
             .catch((error) => {

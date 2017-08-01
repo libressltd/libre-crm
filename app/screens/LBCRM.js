@@ -3,8 +3,8 @@ import { AsyncStorage } from 'react-native';
 import { AboutUsScreen } from 'libre-crm/app/screens/AboutUsScreen';
 import { SideMenu } from 'libre-crm/app/screens/SideMenu';
 import { CategoryScreen } from 'libre-crm/app/screens/CategoryScreen';
-import { PostDetailScreen } from 'libre-crm/app/screens/PostDetailScreen';
-import { PostScreen } from 'libre-crm/app/screens/PostScreen';
+import PostDetailScreen from 'libre-crm/app/screens/PostDetailScreen';
+import PostScreen from 'libre-crm/app/screens/PostScreen';
 import { ContactUsScreen } from 'libre-crm/app/screens/ContactUsScreen';
 import { SettingScreen } from 'libre-crm/app/screens/SettingScreen';
 import { NotificationScreen } from 'libre-crm/app/screens/NotificationScreen';
@@ -91,7 +91,7 @@ for (var i = 0; i < Config.side_menu.length; i ++)
             const CategoryStack = StackNavigator({
                 Category: { screen: CategoryScreen },
                 Post: {screen: PostScreen},
-                PostDetail: {screen: PostDetailScreen},
+                PostDetail: {screen: PostScreen},
 
             }, {
                 headerMode: 'none',

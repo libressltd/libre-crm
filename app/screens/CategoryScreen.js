@@ -79,6 +79,12 @@ class CategoryScreen extends Component {
     }
 
     requestCategory() {
+        this.loadLocalCategory();
+        this.requestOnlineCategory();
+    }
+
+    requestOnlineCategory()
+    {
         fetch(this.state.config.url, {
             method: 'GET',
             headers: {
@@ -88,14 +94,34 @@ class CategoryScreen extends Component {
         })
         .then((response) => response.json())
         .then((responseJson) => {
-            this.state.data = responseJson;
-            this.state.loading = false;
-            this.setState(this.state);
+            this.receiveOnlineCategory(responseJson.data);
             return responseJson;
         })
         .catch((error) => {
             console.error(error);
         }).done();
+    }
+
+    receiveOnlineCategory(categories)
+    {
+        this.saveLocalCategory(categories);
+        this.receiveCategory(categories);
+    }
+
+    saveLocalCategory(categories)
+    {
+        
+    }
+
+    loadLocalCategory()
+    {
+
+    }
+
+    receiveCategory(categories)
+    {
+        this.state.data = categories;
+        this.setState(this.state);
     }
 }
 
